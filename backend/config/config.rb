@@ -38,3 +38,6 @@ else
   raise "Missing ENV POSTGRESQL_PASSWORD"
 end
 
+# CSV
+POKEMON_COLUMNS = YAML.load_file File.expand_path('../config/yaml/pokemon_columns.yaml', __dir__)
+
