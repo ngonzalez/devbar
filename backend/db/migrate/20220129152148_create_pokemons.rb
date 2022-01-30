@@ -1,6 +1,7 @@
 class CreatePokemons < ActiveRecord::Migration[7.0]
   def change
     create_table :pokemons do |t|
+      t.string :name, null: false, unique: true
       t.string :type_1, null: false
       t.string :type_2, null: false
       t.integer :total, null: false
@@ -12,6 +13,10 @@ class CreatePokemons < ActiveRecord::Migration[7.0]
       t.integer :speed, null: false
       t.integer :generation, null: false
       t.boolean :legendary, null: false
+      t.datetime :deleted_at
+      t.index [:name]
+      t.index [:type_1]
+      t.index [:type_2]
       t.timestamps
     end
   end

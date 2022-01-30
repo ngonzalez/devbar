@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2022_01_29_152148) do
   enable_extension "plpgsql"
 
   create_table "pokemons", force: :cascade do |t|
+    t.string "name", null: false
     t.string "type_1", null: false
     t.string "type_2", null: false
     t.integer "total", null: false
@@ -27,8 +28,12 @@ ActiveRecord::Schema.define(version: 2022_01_29_152148) do
     t.integer "speed", null: false
     t.integer "generation", null: false
     t.boolean "legendary", null: false
+    t.datetime "deleted_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_pokemons_on_name"
+    t.index ["type_1"], name: "index_pokemons_on_type_1"
+    t.index ["type_2"], name: "index_pokemons_on_type_2"
   end
 
 end

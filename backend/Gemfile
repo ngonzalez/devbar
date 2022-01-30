@@ -12,6 +12,14 @@ gem "puma", "~> 5.0"
 # PostgreSQL
 gem 'pg'
 
+# Use Redis adapter to run Action Cable in production
+gem 'redis'
+gem 'redis-rails'
+
+# Simple, efficient background processing for Ruby.
+gem 'sidekiq'
+gem 'sinatra', require: nil
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
@@ -29,6 +37,9 @@ gem 'active_model_serializers'
 
 # down
 gem 'down'
+
+# A Rails plugin to add soft delete.
+gem 'acts_as_paranoid'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

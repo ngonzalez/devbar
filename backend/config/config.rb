@@ -38,6 +38,26 @@ else
   raise "Missing ENV POSTGRESQL_PASSWORD"
 end
 
-# CSV
-POKEMON_COLUMNS = YAML.load_file File.expand_path('../config/yaml/pokemon_columns.yaml', __dir__)
+# REDIS_HOST
+if ENV['REDIS_HOST'].present?
+  REDIS_HOST = ENV['REDIS_HOST']
+else
+  raise "Missing ENV REDIS_HOST"
+end
 
+# REDIS_PORT
+if ENV['REDIS_PORT'].present?
+  REDIS_PORT = ENV['REDIS_PORT']
+else
+  raise "Missing ENV REDIS_PORT"
+end
+
+# REDIS_DB
+if ENV['REDIS_DB'].present?
+  REDIS_DB = ENV['REDIS_DB']
+else
+  raise "Missing ENV REDIS_DB"
+end
+
+# POKEMON_COLUMNS
+POKEMON_COLUMNS = YAML.load_file(File.expand_path('../config/yaml/pokemon_columns.yaml', __dir__))
