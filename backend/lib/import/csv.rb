@@ -1,10 +1,7 @@
 require 'csv'
-require 'pry'
-
-class DownloadError < Exception ; end
 
 module Import
-  class Pokemons
+  class Pokemon
     attr_accessor :file_url, :file
 
     def initialize(file_url)

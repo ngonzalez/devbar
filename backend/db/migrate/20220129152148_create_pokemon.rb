@@ -1,9 +1,9 @@
-class CreatePokemons < ActiveRecord::Migration[7.0]
+class CreatePokemon < ActiveRecord::Migration[7.0]
   def change
-    create_table :pokemons do |t|
+    create_table :pokemon do |t|
       t.string :name, null: false, unique: true
       t.string :type_1, null: false
-      t.string :type_2, null: false
+      t.string :type_2
       t.integer :total, null: false
       t.integer :hp, null: false
       t.integer :attack, null: false
