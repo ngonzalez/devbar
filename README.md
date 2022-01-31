@@ -14,4 +14,4 @@ bundle exec rails s
 ```
 
 Please read the README file in `backend` folder for more instructions
-https://github.com/ngonzalez/devbar/blob/main/backend/README.md
+https://github.com/ngonzalez/devbar/tree/main/backend
