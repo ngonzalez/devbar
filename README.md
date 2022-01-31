@@ -1,6 +1,6 @@
 # devbar
 
-The application handle a database collection of Pokemon,
+The application handles a database collection of Pokemon,
 the initial items can be loaded via the following rake task:
 
 ```ruby
