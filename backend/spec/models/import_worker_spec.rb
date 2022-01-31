@@ -1,5 +1,6 @@
 require 'rails_helper'
 require Rails.root + 'lib/import/csv'
+require 'pry'
 
 RSpec.describe Import::Pokemon, type: :model do
   context 'setup test environment' do
@@ -13,7 +14,12 @@ RSpec.describe Import::Pokemon, type: :model do
       source.send :download_file
       expect(source.file.collect.count).to eq(801)
       ImportWorker.new.perform(source.send(:parse_csv).to_json)
-      expect(Pokemon.count).to eq(721)
+      expect(Pokemon.count).to eq(800)
+
+      # Another Pokemon is created
+      pokemon_attributes = { "item_id"=>"1111", "name"=>"test", "type_1"=>"Fire", "type_2"=>"Water", "total"=>"600", "hp"=>"80", "attack"=>"110", "defense"=>"120", "sp_atk"=>"130", "sp_def"=>"90", "speed"=>"70", "generation"=>"6", "legendary"=>"True" }
+      pokemon = Pokemon.create!(pokemon_attributes)
+      expect(pokemon).to be_instance_of(Pokemon)
     end
   end
 end
