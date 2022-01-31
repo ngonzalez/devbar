@@ -62,3 +62,20 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+def pokemon_attributes
+  { "item_id"=>"1111",
+    "name"=>"test",
+    "type_1"=>"Fire",
+    "type_2"=>"Water",
+    "total"=>"600",
+    "hp"=>"80",
+    "attack"=>"110",
+    "defense"=>"120",
+    "sp_atk"=>"130",
+    "sp_def"=>"90",
+    "speed"=>"70",
+    "generation"=>"6",
+    "legendary"=>"True",
+  }
+end

@@ -11,6 +11,7 @@ class ImportWorker
     items_attributes.each do |item|
       begin
         Rails.logger.info(item.inspect)
+        item['name'] = item['name'].strip # Avoid special characters
         pokemon = Pokemon.find_by(name: item['name']) || Pokemon.new
         pokemon.attributes = pokemon_attributes(item)
         pokemon.save!
@@ -27,7 +28,6 @@ class ImportWorker
     attributes = item.symbolize_keys
     attributes = attributes.except(:id)
     attributes = attributes.merge(item_id: item['id'])
-    attributes['name'] = item['name'].strip
     attributes
   end
 end

@@ -17,7 +17,6 @@ RSpec.describe Import::Pokemon, type: :model do
       expect(Pokemon.count).to eq(800)
 
       # Another Pokemon is created
-      pokemon_attributes = { "item_id"=>"1111", "name"=>"test", "type_1"=>"Fire", "type_2"=>"Water", "total"=>"600", "hp"=>"80", "attack"=>"110", "defense"=>"120", "sp_atk"=>"130", "sp_def"=>"90", "speed"=>"70", "generation"=>"6", "legendary"=>"True" }
       pokemon = Pokemon.create!(pokemon_attributes)
       expect(pokemon).to be_instance_of(Pokemon)
 
