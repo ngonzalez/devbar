@@ -20,6 +20,12 @@ RSpec.describe Import::Pokemon, type: :model do
       pokemon_attributes = { "item_id"=>"1111", "name"=>"test", "type_1"=>"Fire", "type_2"=>"Water", "total"=>"600", "hp"=>"80", "attack"=>"110", "defense"=>"120", "sp_atk"=>"130", "sp_def"=>"90", "speed"=>"70", "generation"=>"6", "legendary"=>"True" }
       pokemon = Pokemon.create!(pokemon_attributes)
       expect(pokemon).to be_instance_of(Pokemon)
+
+      # A cleanup is called right after and the count is back to normal,
+      # the Pokemon is removed because it's not part of the initial import of file_url
+      item_ids = source.send(:parse_csv).map { |item| item[:id] }
+      CleanupWorker.new.perform(item_ids.to_json)
+      expect(Pokemon.only_deleted.map(&:name).sort).to eq(['test'])
     end
   end
 end

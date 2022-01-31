@@ -12,15 +12,22 @@ class ImportWorker
       begin
         Rails.logger.info(item.inspect)
         pokemon = Pokemon.find_by(name: item['name']) || Pokemon.new
-        pokemon_attributes = item.symbolize_keys
-        pokemon_attributes = pokemon_attributes.except(:id)
-        pokemon_attributes = pokemon_attributes.merge(item_id: item['id'])
-        pokemon.attributes = pokemon_attributes
+        pokemon.attributes = pokemon_attributes(item)
         pokemon.save!
       rescue StandardError => exception
         Rails.logger.error(exception)
         next
       end
     end
+  end
+  
+  private
+  
+  def pokemon_attributes(item)
+    attributes = item.symbolize_keys
+    attributes = attributes.except(:id)
+    attributes = attributes.merge(item_id: item['id'])
+    attributes['name'] = item['name'].strip
+    attributes
   end
 end

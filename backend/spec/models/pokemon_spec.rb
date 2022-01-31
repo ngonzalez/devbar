@@ -12,7 +12,7 @@ RSpec.describe Pokemon, :type => :model do
     end
 
     context "when name is defined" do
-      before { pokemon.name = "dummy" }
+      before { pokemon.name = "test" }
       it { is_expected.to be_truthy }
     end
   end
